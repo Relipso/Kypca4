@@ -1,5 +1,5 @@
 import pytest
-from src.main import masked_operation
+from src.utils import masked_operation
 
 # Тесты проверяющие как будет маскироваться счёт и его номер
 
