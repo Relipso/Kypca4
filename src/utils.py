@@ -1,11 +1,12 @@
 import json
 from datetime import datetime
+from src.settings import OPERATIONS_PATH
 
 
 def load_operations():
     """В этой функции идёт вывод операций, затем идет проверка операции по её статусу,
     в конце происходит сортировка по дате"""
-    with open("D:/Python/Kypca4/operations.json", "r", encoding="utf-8") as file:
+    with open(OPERATIONS_PATH, "r", encoding="utf-8") as file:
         operations = json.load(file)
 
     executed_operations = [operation for operation in operations if operation.get("state") == "EXECUTED"]
@@ -58,13 +59,3 @@ def print_operation(formatted_operation):
     print(f"{formatted_operation["from_mask"]} -> {formatted_operation["to_mask"]}")
     print(f"{formatted_operation["amount"]} {formatted_operation["currency"]}")
     print()
-
-# Здесь загружаем операции, обрабатываем каждую операцию с помощью функции process_operation(),
-# а затем выводим отформатированную информацию по операции с помощью функции print_operation().
-
-
-operations = load_operations()
-
-for operation in operations:
-    formatted_operation = process_operation(operation)
-    print_operation(formatted_operation)
